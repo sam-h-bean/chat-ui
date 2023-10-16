@@ -2,6 +2,7 @@ import { SERPAPI_KEY, SERPER_API_KEY, YDC_API_KEY } from "$env/static/private";
 
 import { getJson } from "serpapi";
 import type { GoogleParameters } from "serpapi";
+import { YouWebSearch } from "../../types/WebSearch";
 
 // Show result as JSON
 export async function searchWeb(query: string) {
@@ -72,16 +73,13 @@ export async function searchWebYouApi(query: string) {
 		},
 	});
 
-	/* eslint-disable @typescript-eslint/no-explicit-any */
-	const data = (await response.json()) as Record<string, any>;
-
 	if (!response.ok) {
 		throw new Error(
-			data["message"] ??
 				`You.com API returned error code ${response.status} - ${response.statusText}`
 		);
 	}
 
+	const data: YouWebSearch = await response.json();
 
 	return {
 		organic_results: data.hits.map((hit) => hit.snippets.join("\n")) ?? [],
