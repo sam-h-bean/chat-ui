@@ -4,6 +4,15 @@ import { getJson } from "serpapi";
 import type { GoogleParameters } from "serpapi";
 import { YouWebSearch } from "../../types/WebSearch";
 
+// get which SERP api is providing web results
+export function getWebSearchProvider() {
+	if (YDC_API_KEY) {
+		return "You.com"
+	} else {
+		return "Google"
+	}
+}
+
 // Show result as JSON
 export async function searchWeb(query: string) {
 	if (YDC_API_KEY) {
