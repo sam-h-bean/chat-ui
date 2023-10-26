@@ -40,8 +40,7 @@ export async function runWebSearch(
 
 	try {
 		const searchProvider = getWebSearchProvider();
-		webSearch.searchQuery =
-			searchProvider === WebSearchProvider.YOU ? prompt : await generateQuery(messages);
+		webSearch.searchQuery = await generateQuery(messages);
 		appendUpdate(`Searching ${searchProvider}`, [webSearch.searchQuery]);
 		const results = await searchWeb(webSearch.searchQuery);
 		webSearch.results =
