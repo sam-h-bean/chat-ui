@@ -70,7 +70,7 @@ export async function searchWebSerpApi(query: string) {
 }
 
 export async function searchWebYouApi(query: string) {
-	const response = await fetch(`https://api.ydc-index.io/search?query=${query}`, {
+	const response = await fetch(`http://localhost:5000/snippet_search?query=${query}`, {
 		method: "GET",
 		headers: {
 			"X-API-Key": YDC_API_KEY,
