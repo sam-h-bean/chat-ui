@@ -35,7 +35,7 @@ interface YouSearchHit {
 	url: string;
 	title: string;
 	description: string;
-	snippets: string[];
+	snippet: string;
 }
 
 // eslint-disable-next-line no-shadow
